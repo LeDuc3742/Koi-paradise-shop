@@ -1,0 +1,51 @@
+﻿<!DOCTYPE html>
+<html lang="vi">
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>@ViewData["Title"] - Trang Trại Cá Koi</title>
+	<script type="importmap"></script>
+	<link rel="stylesheet" href="~/css/custom.css"/>
+</head>
+<body>
+	<header>
+		<div class="logo">Trang Trại Cá Koi</div>
+		<nav>
+			<ul>
+				<li>
+					<a asp-page="/Index">Trang Chủ</a>
+				</li>
+				<li>
+					<a asp-page="/Products">Sản Phẩm</a>
+				</li>
+				<li>
+					<a asp-page="/About">Giới Thiệu</a>
+				</li>
+				<li>
+					<a asp-page="/Blog">Blog</a>
+				</li>
+				<li>
+					<a asp-page="/FAQ">Câu Hỏi Thường Gặp</a>
+				</li>
+				<li>
+					<a asp-page="/Login">Đăng Nhập</a>
+				</li>
+				<li>
+					<a asp-page="/Register">Đăng Ký</a>
+				</li>
+			</ul>
+		</nav>
+	</header>
+	<div>
+		<main role="main">
+			@RenderBody()
+		</main>
+	</div>
+	
+	<footer>
+		<p>Bản quyền &copy; 2024 Trang Trại Cá Koi</p>
+	</footer>
+	
+	@await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
