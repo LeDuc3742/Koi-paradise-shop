@@ -1,0 +1,84 @@
+@page
+@model BuyModel
+@{
+	ViewData["Title"] = "Mua Cá Koi";
+	<script>
+		function calculateTotal() {
+			// Lấy các phần tử DOM cần thiết
+			const fishTypeSelect = document.getElementById("fishType");
+			const quantityInput = document.getElementById("quantity");
+			const totalPriceSpan = document.getElementById("totalPrice");
+
+			// Lấy giá của loại cá được chọn
+			const price = parseInt(fishTypeSelect.options[fishTypeSelect.selectedIndex].getAttribute("data-price"), 10);
+
+			// Lấy số lượng từ input
+			const quantity = parseInt(quantityInput.value, 10);
+
+			// Tính tổng tiền
+			const total = price * quantity;
+
+			// Hiển thị tổng tiền (định dạng số theo chuẩn Việt Nam)
+			totalPriceSpan.textContent = total.toLocaleString("vi-VN") + " VND";
+		}
+
+		// Đảm bảo tính tổng ngay khi trang được tải
+		document.addEventListener("DOMContentLoaded", calculateTotal);
+	</script>
+
+}
+
+<div class="background">
+	<div class="text-with-background">
+		<h2>Đặt Mua Cá Koi</h2>
+		<div class="anq">
+			<form id="buy-form">
+				<!-- Chọn loài cá -->
+				<label for="fishType">Chọn loài cá:</label>
+				<select id="fishType" name="fishType" onchange="calculateTotal()">
+					<option value="kohaku" data-price="2800000">Cá Koi Kohaku - 2,800,000 VND</option>
+					<option value="chagoi" data-price="2400000">Cá Koi Chagoi - 2,400,000 VND</option>
+					<option value="shusui" data-price="2200000">Cá Koi Shusui - 2,200,000 VND</option>
+					<option value="sanke" data-price="48500000">Cá Koi Sanke - 48,500,000 VND</option>
+					<option value="bướm" data-price="13000000">Cá Koi Bướm - 13,000,000 VND</option>
+					<option value="utsuri" data-price="11500000">Cá Koi Utsuri - 11,500,000 VND</option>
+					<option value="showa" data-price="14000000">Cá Koi Showa - 14,000,000 VND</option>
+					<option value="tancho" data-price="2500000">Cá Koi Tancho - 2,500,000 VND</option>
+					<option value="ogon" data-price="32000000">Cá Koi Ogon - 32,000,000 VND</option>
+				</select>
+				<br /><br />
+
+				<!-- Chọn số lượng -->
+				<label for="quantity">Số lượng:</label>
+				<input type="number" id="quantity" name="quantity" value="1" min="1" onchange="calculateTotal()">
+				<br /><br />
+
+				<!-- Hiển thị tổng tiền -->
+				<label for="totalPrice">Tổng tiền:</label>
+				<span id="totalPrice"></span>
+				<br /><br />
+
+				<!-- Nhập địa chỉ giao hàng -->
+				<label for="address">Địa chỉ giao hàng:</label>
+				<input type="text" id="address" name="address" required>
+				<br /><br />
+
+				<!-- Nhập số điện thoại -->
+				<label for="phone">Số điện thoại:</label>
+				<input type="tel" id="phone" name="phone" required>
+				<br /><br />
+
+				<!-- Phương thức thanh toán -->
+				<label for="paymentMethod">Phương thức thanh toán:</label>
+				<select id="paymentMethod" name="paymentMethod" required>
+					<option value="cod">Thanh toán khi nhận hàng (COD)</option>
+					<option value="bank">Chuyển khoản ngân hàng</option>
+				</select>
+				<br /><br />
+
+				<!-- Nút gửi -->
+				<input type="submit" value="Mua Ngay">
+			</form>
+		</div>
+	</div>
+</div>
