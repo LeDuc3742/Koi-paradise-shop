@@ -1,0 +1,33 @@
+{
+  "Files": [
+    {
+      "Id": "C:\\Users\\lemin\\OneDrive\\Documents\\KOIPARADISESHOP\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\KoiParadise.bundle.scp.css",
+      "PackagePath": "staticwebassets\\KoiParadise.bundle.scp.css"
+    },
+    {
+      "Id": "C:\\Users\\lemin\\OneDrive\\Documents\\KOIPARADISESHOP\\wwwroot\\css\\custom.css",
+      "PackagePath": "staticwebassets\\css\\custom.css"
+    },
+    {
+      "Id": "C:\\Users\\lemin\\OneDrive\\Documents\\KOIPARADISESHOP\\wwwroot\\favicon.ico",
+      "PackagePath": "staticwebassets\\favicon.ico"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.KoiParadise.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.build.KoiParadise.props",
+      "PackagePath": "build\\KoiParadise.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildMultiTargeting.KoiParadise.props",
+      "PackagePath": "buildMultiTargeting\\KoiParadise.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildTransitive.KoiParadise.props",
+      "PackagePath": "buildTransitive\\KoiParadise.props"
+    }
+  ],
+  "ElementsToRemove": []
+}
