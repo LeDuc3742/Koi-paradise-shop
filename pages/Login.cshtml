@@ -1,0 +1,42 @@
+@page
+@using Microsoft.AspNetCore.Http
+@model LoginModel
+@{
+	if (Request.Method == HttpMethods.Get)
+	{
+		ViewData["Title"] = "Đăng Nhập";
+	}
+	else
+	{
+		string username = Request.Form["Username"].ToString();
+		string password = Request.Form["Password"].ToString();
+		
+		if (Model.IsLoginInfoValid(username, password))
+		{
+			Response.Cookies.Append("username", username);
+			Response.Redirect("/Index");
+		}
+		else
+		{
+			Response.Redirect("/Login?" + Model.GenerateErrorQueryString() + "&username=" + username);
+		}
+	}
+}
+
+<div class="background">
+	<div class="container">
+		<h1>Đăng Nhập</h1>
+		<form id="login-form" method="post">
+			<label>Tên người dùng:</label>
+			<input class="input-field" type="text" name="Username" value="@Model.GetQueryString("username")" placeholder="Nhập tên người dùng" required/>
+			
+			<label>Mật khẩu:</label>
+			<input class="input-field" type="password" name="Password" placeholder="Nhập mật khẩu" required/>
+			
+			<button type="submit">Đăng Nhập</button>
+		</form>
+		
+		<p id="error-message" class="message">@Model.GetErrorMessage()</p>
+		<p>Chưa có tài khoản? <a asp-page="/Register">Đăng Ký ngay!</a></p>
+	</div>
+</div>

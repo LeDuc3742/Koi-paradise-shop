@@ -1,0 +1,47 @@
+@page
+@using Microsoft.AspNetCore.Http
+@model RegisterModel
+@{
+	if (Request.Method == HttpMethods.Get)
+	{
+		ViewData["Title"] = "Đăng Ký";
+	}
+	else
+	{
+		string username = Request.Form["Username"].ToString();
+		string password = Request.Form["Password"].ToString();
+		string passwordConfirmation = Request.Form["PasswordConfirmation"].ToString();
+		
+		if (Model.IsRegisterInfoValid(username, password, passwordConfirmation))
+		{
+			Model.AddUser(username, password);
+			Response.Cookies.Append("username", username);
+			Response.Redirect("/Index");
+		}
+		else
+		{
+			Response.Redirect("/Register?" + Model.GenerateErrorQueryString() + "&username=" + username);
+		}
+	}
+}
+<div class="background">
+	<div class="container">
+		<h1>Đăng Ký</h1>
+		<form id="register-form" method="post">
+			<label>Tên người dùng:</label>
+			<input class="input-field" name="Username" type="text" value="@Model.GetQueryString("username")" placeholder="Nhập tên người dùng" required />
+
+			<label>Mật khẩu:</label>
+			<input class="input-field" name="Password" type="password" placeholder="Nhập mật khẩu" required />
+
+			<label>Xác nhận mật khẩu:</label>
+			<input class="input-field" name="PasswordConfirmation" type="password" placeholder="Xác nhận mật khẩu" required />
+
+			<button type="submit">Đăng Ký</button>
+		</form>
+
+		<p id="error-message" class="message">@Model.GetErrorMessage()</p>
+		<p>Đã có tài khoản? <a asp-page="/Login">Đăng Nhập ngay!</a></p>
+	</div>
+</div>
+
